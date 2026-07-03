@@ -59,6 +59,3 @@ def count_file(dna_string: str):
             nucleotide_counts[c] += 1
 
     print(nucleotide_counts)
-
-if __name__ == "__main__":
-    main("data/example_string.txt")
