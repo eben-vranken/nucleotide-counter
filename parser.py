@@ -57,5 +57,6 @@ def count_nucleotides(dna_string: str):
     for c in dna_string.upper():
         if c in nucleotide_counts:
             nucleotide_counts[c] += 1
-
+        else:
+            print("Unknown symbol: %s" % c)
     return nucleotide_counts
