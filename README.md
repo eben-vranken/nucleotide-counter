@@ -5,8 +5,11 @@
 </p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Coverage- 94%25-brightgreen.svg" alt="Coverage"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"></a>
+    <a href="#"><img src="https://img.shields.io/badge/Coverage- 94%25-brightgreen.svg" alt="Coverage"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"></a>
+    <a href="https://github.com/eben-vranken/nucleotide-counter/actions">
+    <img src="https://github.com/eben-vranken/nucleotide-counter/actions/workflows/test.yml/badge.svg" alt="Build Status">
+    </a>
 </p>
 
 A modular, zero-dependency Python CLI built to parse genomic sequence strings. Unlike basic string tally tools, it cleans raw sequence data, evaluates complex IUPAC mixed/ambiguity bases, detects sequence gaps, handles mode sanitization (DNA vs. RNA), and exports structured reports.
