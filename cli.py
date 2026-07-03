@@ -1,6 +1,5 @@
 from argparse import ArgumentParser
-
-
+import parser
 
 def read_args():
     parser = ArgumentParser()
@@ -15,4 +14,6 @@ def read_args():
 
 if  __name__ == "__main__":
     args = read_args()
-    
+    nucleic_acid_string = parser.read_file(args.file)
+    nucleotide_count = parser.count_nucleotides(nucleic_acid_string)
+    print(nucleotide_count)

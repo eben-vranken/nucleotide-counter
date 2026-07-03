@@ -1,12 +1,12 @@
-def main(fileName):
+def read_file(fileName):
     # Read file
     with open(fileName, "r") as f:
         dna_string: str = f.read()
 
     # Parse and Count
-    count_file(dna_string)
+    return dna_string
 
-def count_file(dna_string: str):
+def count_nucleotides(dna_string: str):
     nucleotide_counts = {
         # Base codes
         # Adenine
@@ -58,4 +58,4 @@ def count_file(dna_string: str):
         if c in nucleotide_counts:
             nucleotide_counts[c] += 1
 
-    print(nucleotide_counts)
+    return nucleotide_counts
