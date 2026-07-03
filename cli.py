@@ -12,17 +12,33 @@ def read_args():
     parser.add_argument("--format", choices=["json", "csv", "txt"], default="json", help="Output format (json/csv/txt)")
     parser.add_argument("--output", help="Output file path")
     parser.add_argument("--gc", action="store_true", help="Calculate and include GC content percentage in the analysis")
+    parser.add_argument("--transcribe", action="store_true", help="Transcribe DNA to RNA (replaces T with U) instead of printing the summary")
     
     return parser.parse_args()
 
 def main():
     args = read_args()
+
+    if args.transcribe and args.mode == "rna":
+        print("Error: --transcribe requires --mode dna (RNA sequences are already transcribed).", file=sys.stderr)
+        sys.exit(1)
+
     try:
         nucleic_acid_string = parser.read_file(args.file)
     except FileNotFoundError:
         print(f"Error: The file '{args.file}' could not be found.", file=sys.stderr)
         sys.exit(1)
-        
+
+    if args.transcribe:
+        transcribed = parser.transcribe(nucleic_acid_string)
+        if args.output:
+            file_path = args.output + "." + "txt"
+            with open(file_path, "w") as fp:
+                fp.write(transcribed)
+        else:
+            print(transcribed)
+        return
+
     nucleotide_counts = parser.count_nucleotides(nucleic_acid_string)
     
     if args.gc:
@@ -71,8 +87,7 @@ def main():
 
         if args.gc:
             print("=" * TABLE_WIDTH)
-            gc = 100*(nucleotide_counts["G"] + nucleotide_counts["C"])/(nucleotide_counts["A"] + nucleotide_counts["C"] + nucleotide_counts["G"] + nucleotide_counts["T"])
-            print(f"GC:\t\t{gc:>5.2f}%")
+            print(f"GC:\t\t{nucleotide_counts['GC']:>5.2f}%")
 
 if  __name__ == "__main__":
     main()
