@@ -6,9 +6,6 @@ def output(nucleotide_count: dict[str, int], format: str, file_location):
     file = build_file(format, nucleotide_count)
 
     file_path: str
-    
-    if "." in file_location:
-        file_location = file_location.split(".")[0]
 
     file_path = file_location + "." + format
 
