@@ -1,7 +1,15 @@
 import json
+import io
+import csv
 
 def output(nucleotide_count: dict[str, int], format: str, file_location):
     file = build_file(format, nucleotide_count)
+
+    file_path: str
+    
+    if "." in file_location:
+        file_location = file_location.split(".")[0]
+
     file_path = file_location + "." + format
 
     with open(file_path, 'w') as fp:
@@ -20,7 +28,13 @@ def json_output(nucleotide_count):
     return json.dumps(nucleotide_count, indent=4)
 
 def csv_output(nucleotide_count):
-    return ""
+    buffer = io.StringIO()
+    writer = csv.writer(buffer)
+
+    writer.writerow(nucleotide_count.keys())
+    writer.writerow(nucleotide_count.values())
+
+    return buffer.getvalue()
 
 def txt_output(nucleotide_count):
     return ""
