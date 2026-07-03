@@ -54,7 +54,7 @@ def main():
     nucleotide_counts["Gap"] = dot_count + dash_count
 
     if args.output:
-        compiler.output(nucleotide_counts, args)
+        compiler.output(nucleotide_counts, args.format, args.output)
     else:
         TABLE_WIDTH = 38
 
