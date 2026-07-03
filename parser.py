@@ -27,21 +27,21 @@ def count_nucleotides(dna_string: str):
         # Mix codes
         # Adenine or Guanine
         "R": 0,
-        # Cytosine or Thymine
+        # Cytosine or Thymine (or Uracil)
         "Y": 0,
         # Guanine or Cytosine
         "S": 0,
-        # Adenine or Thymine
+        # Adenine or Thymine (or Uracil)
         "W": 0,
-        # Guanine or Thymine
+        # Guanine or Thymine (or Uracil)
         "K": 0,
         # Adenine or Cytosine
         "M": 0,
-        # Cytosine or Guanine or Thymine
+        # Cytosine or Guanine or Thymine (or Uracil)
         "B": 0,
-        # Adenine or Guanine or Thymine
+        # Adenine or Guanine or Thymine (or Uracil)
         "D": 0,
-        # Adenine or Cytosine or Thymine
+        # Adenine or Cytosine or Thymine (or Uracil)
         "H": 0,
         # Adenine or Cytosine or Guanine
         "V": 0,
