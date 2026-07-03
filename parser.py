@@ -54,7 +54,8 @@ def count_nucleotides(dna_string: str):
         "-": 0,
     }
 
-    for c in dna_string.upper():
+    cleaned_string = "".join(dna_string.split())
+    for c in cleaned_string.upper():
         if c in nucleotide_counts:
             nucleotide_counts[c] += 1
         else:
